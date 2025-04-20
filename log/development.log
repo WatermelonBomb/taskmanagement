@@ -1,0 +1,380 @@
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='SimpleTodo'*/[0m
+  [1m[35m (376.2ms)[0m  [1m[35mCREATE DATABASE "simple_todo_development" ENCODING = 'unicode' /*application='SimpleTodo'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='SimpleTodo'*/[0m
+  [1m[35m (137.4ms)[0m  [1m[35mCREATE DATABASE "simple_todo_test" ENCODING = 'unicode' /*application='SimpleTodo'*/[0m
+  [1m[35m (23.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='SimpleTodo'*/[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='SimpleTodo'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5885274538178367045) /*application='SimpleTodo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='SimpleTodo'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='SimpleTodo'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-04-20 11:30:58.992563', '2025-04-20 11:30:58.992566') RETURNING "key" /*application='SimpleTodo'*/[0m
+Migrating to CreateTasks (20250420113027)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='SimpleTodo'*/[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "title" character varying(50) NOT NULL, "memo" text, "due_date" date NOT NULL, "completed" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='SimpleTodo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250420113027') RETURNING "version" /*application='SimpleTodo'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='SimpleTodo'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5885274538178367045) /*application='SimpleTodo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='SimpleTodo'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-04-20 20:38:08 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (20.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='SimpleTodo'*/[0m
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | GC: 11.5ms)
+Completed 500 Internal Server Error in 296ms (ActiveRecord: 14.3ms (1 query, 0 cached) | GC: 11.5ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-04-20 20:38:10 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for ::1 at 2025-04-20 20:47:37 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='SimpleTodo'*/[0m
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (3.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 15.1ms | GC: 9.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 60.5ms | GC: 32.2ms)
+Completed 500 Internal Server Error in 174ms (ActiveRecord: 14.5ms (1 query, 0 cached) | GC: 34.3ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 20:47:53 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (14.7ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 17.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 14.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 20:47:54 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 20:58:35 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='SimpleTodo'*/[0m
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 18.0ms | GC: 14.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 36.6ms | GC: 23.3ms)
+Completed 500 Internal Server Error in 172ms (ActiveRecord: 15.4ms (1 query, 0 cached) | GC: 30.7ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 20:58:36 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 21:02:22 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (38.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 44.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 38.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 21:02:26 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'inter-font.css' was not found in the load path.):
+    18:     <link rel="apple-touch-icon" href="/icon.png">
+    19: 
+    20:     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    21:     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    22:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    23:     <%= javascript_importmap_tags %>
+    24:   </head>
+  
+app/views/layouts/application.html.erb:21
+
+Information for cause: Propshaft::MissingAssetError (The asset 'inter-font.css' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:21
+Started GET "/" for ::1 at 2025-04-20 21:18:53 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='SimpleTodo'*/[0m
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | GC: 0.0ms)
+Completed 200 OK in 131ms (Views: 13.2ms | ActiveRecord: 15.5ms (1 query, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/assets/application.tailwind-f1618b7d.css" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/turbo.min-1262d735.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/application-bfcdf840.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/stimulus.min-4b1e420e.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/controllers/application-3affb389.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/controllers/hello_controller-708796bd.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/assets/controllers/index-ee64e1f1.js" for ::1 at 2025-04-20 21:18:54 +0900
+Started GET "/tasks/new" for ::1 at 2025-04-20 21:21:20 +0900
+Processing by TasksController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 25.8ms | GC: 0.0ms)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 27.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | GC: 0.0ms)
+Completed 200 OK in 93ms (Views: 28.4ms | ActiveRecord: 13.5ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/tasks" for ::1 at 2025-04-20 21:21:40 +0900
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"title"=>"ご飯", "due_date"=>"2025-04-22", "memo"=>"ぎゅーどんがいいな"}, "commit"=>"Create Task"}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='create',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:21:in `create'
+  [1m[36mTask Create (5.9ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "memo", "due_date", "completed", "created_at", "updated_at") VALUES ('ご飯', 'ぎゅーどんがいいな', '2025-04-22', FALSE, '2025-04-20 12:21:40.827065', '2025-04-20 12:21:40.827065') RETURNING "id" /*action='create',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='create',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:21:in `create'
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 54ms (ActiveRecord: 6.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/tasks" for ::1 at 2025-04-20 21:21:40 +0900
+Processing by TasksController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."due_date" ASC /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:9
+  Rendered tasks/index.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | GC: 0.0ms)
+Completed 200 OK in 53ms (Views: 3.5ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/tasks/1" for ::1 at 2025-04-20 21:21:46 +0900
+Processing by TasksController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mTask Load (13.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = 1 LIMIT 1 /*action='destroy',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:49:in `set_task'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*action='destroy',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `destroy'
+  [1m[36mTask Destroy (5.7ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = 1 /*action='destroy',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*action='destroy',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `destroy'
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 64ms (ActiveRecord: 20.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/tasks" for ::1 at 2025-04-20 21:21:46 +0900
+Processing by TasksController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 10.8ms | GC: 9.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | GC: 9.5ms)
+Completed 200 OK in 50ms (Views: 11.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 9.5ms)
+
+
+Started GET "/tasks" for ::1 at 2025-04-21 00:15:24 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (51.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 64.5ms | GC: 1.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 74.8ms | GC: 1.4ms)
+Completed 200 OK in 146ms (Views: 1.0ms | ActiveRecord: 75.5ms (1 query, 0 cached) | GC: 8.2ms)
+
+
+Started GET "/tasks" for ::1 at 2025-04-21 00:15:25 +0900
+Processing by TasksController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "tasks" LIMIT 1 /*action='index',application='SimpleTodo',controller='tasks'*/[0m
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 63ms (Views: 2.4ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/tasks/new" for ::1 at 2025-04-21 00:15:26 +0900
+Processing by TasksController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 4.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 4.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/tasks/new" for ::1 at 2025-04-21 00:15:29 +0900
+Processing by TasksController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 2.8ms | GC: 0.6ms)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 3.0ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.6ms)
+Completed 200 OK in 41ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
